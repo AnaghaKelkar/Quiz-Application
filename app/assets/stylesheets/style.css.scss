@@ -61,7 +61,17 @@ section {
   position: absolute; 
   right: 45px;  
 }
+.table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+.td, th {
+  border: 1px solid #ABB2B9;
+  text-align: left;
+  padding: 8px;
+}
 .margin-image{
   margin-top: 10%;  
 }
@@ -79,6 +89,10 @@ section {
   background-color: #F5B7B1; 
   color: #A93226; 
   padding-top: 15px;
+}
+
+.big-font{
+  font-size: 22px; 
 }
 
 .authform form {
