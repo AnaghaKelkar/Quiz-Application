@@ -7,18 +7,44 @@ Things you may want to cover:
 
 * Ruby version
 
-* System dependencies
+  2.3.3
 
-* Configuration
+* Rails version
+    
+  5.1.5
+
+* Github version
+  
+  1.9.4
+
+* sqlite version
+
+  3.8.7.2
+
+* Clone project
+
+  git clone git@github.com:AnaghaKelkar/quiz_app.git
+
+* Go to folder
+
+  cd quiz_app
+
+* Install gemset
+
+  bundle install
 
 * Database creation
+  
+  rake db:create
 
 * Database initialization
+  
+  rake db:migrate
 
-* How to run the test suite
+* Setup 
+  
+  Setup.call
 
-* Services (job queues, cache servers, search engines, etc.)
+* Run Server
 
-* Deployment instructions
-
-* ...
+  localhost:3000
