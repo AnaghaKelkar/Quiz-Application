@@ -53,4 +53,8 @@ Things you may want to cover:
 
 * Run Server
 
+  rails server
+
+* start server
+  
   localhost:3000
