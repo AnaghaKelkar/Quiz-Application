@@ -25,9 +25,15 @@ Things you may want to cover:
 
   git clone git@github.com:AnaghaKelkar/quiz_app.git
 
+  ------------------------or------------------------ 
+  
+  download zip
+
 * Go to folder
 
-  cd quiz_app
+  cd quiz_app (in case of clone)
+
+  cd quiz_app-master (in case of downloading)
 
 * Install gemset
 
