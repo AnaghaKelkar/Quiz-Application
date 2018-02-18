@@ -1,6 +1,6 @@
 namespace :initial do
   desc "Setup for Quiz Application"
-  task :setup do
+  task :setup => :environment do
     Setup.call
   end 
 end
