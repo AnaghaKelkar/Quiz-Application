@@ -53,6 +53,48 @@ section {
   max-width: 320px;
   margin: 0 auto;
 }
+.quizwidth{
+  max-width: 1400px;  
+}
+
+.nextbutton{
+  position: absolute; 
+  right: 45px;  
+}
+.table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td, th {
+  border: 1px solid #ABB2B9;
+  text-align: left;
+  padding: 8px;
+}
+.margin-image{
+  margin-top: 10%;  
+}
+.positive-review{
+  width:400px;
+  height: 50px;
+  background-color: #A3E4D7; 
+  color: #0B5345; 
+  padding-top: 15px;  
+}
+
+.negative-review{
+  width:400px;
+  height: 50px;
+  background-color: #F5B7B1; 
+  color: #A93226; 
+  padding-top: 15px;
+}
+
+.big-font{
+  font-size: 22px; 
+}
+
 .authform form {
   @extend .well;
   @extend .well-lg;

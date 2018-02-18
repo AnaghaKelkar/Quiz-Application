@@ -1,0 +1,15 @@
+<div class="authform">
+	<%= form_tag question_quiz_index_path, method: 'GET', class: 'form-inline' do  %>
+	  <div class='form-group'>
+	    <center><h4>Select quiz category</h4></center>
+	    <hr>
+	    <center><%= select_tag 'category', options_for_select(@categories), prompt: 'All categories', class: 'form-control' %></center>
+	  </div>
+	  <hr>
+	  <center>
+		  <div class='form-group'>
+		    <%= submit_tag 'Start Quiz', :class=>'btn btn-default' %>
+		  </div>
+		</center>
+	<% end %>
+</div>
