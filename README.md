@@ -43,7 +43,7 @@ Things you may want to cover:
 
 * Setup 
   
-  Setup.call
+  rake initial:setup
 
 * Run Server
 
