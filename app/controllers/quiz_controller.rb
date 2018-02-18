@@ -1,6 +1,6 @@
 class QuizController < ApplicationController
   def index
-    @quiz = Quiz.all
+    @quiz = Quiz.find(current_user.user_inputs.pluck(:quiz_id))
   end
 
   def review
@@ -20,8 +20,13 @@ class QuizController < ApplicationController
       @quiz_score = score unless @question.present?
     else
       @quelist = generate_random_questions(params)
-      @question = Question.find(@quelist.first)
-      @quiz = @category.create_quiz
+      if @quelist.empty?
+        @message = "No more questions left"
+      else
+        @question = Question.find(@quelist.first)
+        @quiz = Quiz.new(name: "Quiz", category: @category)
+        @quiz.save(validate: false)
+      end
     end
     @choices = @question.choices if @question.present?
   end
@@ -32,13 +37,25 @@ class QuizController < ApplicationController
 
   def filter_parameters(params)
     questions_for_quiz = params[:quelist].split().map(&:to_i)
-    question = category(params).questions.find(params[:question_id]).next_question(questions_for_quiz)
+    question = questions_for_category.find(params[:question_id]).next_question(questions_for_quiz)
     quiz_entry = Quiz.where(id: params[:quiz]).first
     score = current_user.create_quiz_entry(params[:choice], questions_for_quiz, quiz_entry)
     [questions_for_quiz, question, quiz_entry, score]
   end
 
   def generate_random_questions(params)
-    category(params).questions.where.not(id: current_user.user_inputs.pluck(:question_id)).sample(5).pluck(:id)
+    if category(params).nil?
+      questions_for_category.where.not(id: current_user.user_inputs.pluck(:question_id)).sample(5).pluck(:id)
+    else
+      questions_for_category.where.not(id: current_user.user_inputs.pluck(:question_id)).sample(5).pluck(:id)
+    end
+  end
+
+  def questions_for_category
+    if category(params).nil?
+      Question.all
+    else
+      category(params).questions
+    end
   end
 end

@@ -2,7 +2,7 @@
   <%= form_tag question_quiz_index_path, method: 'GET', class: 'form-inline' do  %>
     <div class='form-group'>
       <%= hidden_field_tag :question_id, question.id %>
-      <%= hidden_field_tag :category, category.name %>
+      <%= hidden_field_tag :category, category.try(:name) %>
       <%= hidden_field_tag :quelist, quelist %>
       <%= hidden_field_tag :quiz, quiz.id %>
 
