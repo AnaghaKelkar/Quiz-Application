@@ -1,0 +1,61 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #ABB2B9;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <center>
+      <br>
+      <div style="font-size: 18px">Review Quiz <b><u><%= @quiz.name %></u></b></div>
+      <br>
+      <div>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Question</td>
+              <% (1..@count).each do |i| %>
+                <td>Option <%= i %></td>
+              <% end %>
+              <td>Your Answer</td>
+            </tr>
+            <% @user_inputs.each do |user_input| %>
+              <% question = user_input.question %>
+              <tr>
+                <% lines = question.text.split("<br />") %>
+                <td>
+                  <%= lines[0] %><br>
+                  <%= lines[2] %>
+                </td>
+                <% question.choices.each do |choice| %>
+                  <% if choice.correct %>
+                    <td style="color: green; font-weight: bold"><%= choice.text %></td>
+                  <% else %>
+                    <td><%= choice.text %></td>
+                  <% end %>
+                <% end %>
+                <% if user_input.correct_answer %>
+                  <td style="color: green; font-weight: bold"><%= user_input.choice.text %></td>
+                <% else %>
+                  <td style="color: red; font-weight: bold"><%= user_input.choice.text %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </center>
+  </div>
+</div>

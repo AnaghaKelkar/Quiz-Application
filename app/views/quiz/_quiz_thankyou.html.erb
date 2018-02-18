@@ -1,0 +1,13 @@
+<div class="margin-image">
+  <%= image_tag src="thank_you.jpg", height: '60%', width: '60%'%>
+</div>
+
+<hr>
+<center><h4> Final Score for Quiz : <b><%= score %></b></h4></center>
+<hr>
+
+<center>
+  <div class="form-group">
+    <p><%= link_to 'Review Submission', quiz_review_path(quiz.id) %></p>
+  </div>
+</center>
