@@ -1,0 +1,61 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #ABB2B9;
+    text-align: left;
+    padding: 8px;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <center>
+      <br>
+      <div style="font-size: 22px"><b><u>Summary</u></b></div>
+      <br><br>
+      <div>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Category</td>
+              <td>Total Questions</td>
+              <td>Questions answered</td>
+              <td>Correct Answers</td>
+              <td>Wrong Answers</td>
+              <td>Question remaining</td>
+            </tr>
+            <tr>
+              <td>All Categories</td>
+              <td><%= Question.count %></td>
+              <td><%= current_user.user_inputs.count %></td>
+              <td><%= current_user.user_inputs.correct_answers.count %></td>
+              <td><%= current_user.user_inputs.incorrect_answers.count %></td>
+              <td><%= Question.count - current_user.user_inputs.count %></td>
+            <tr>
+            <% @categories.each do |category| %>
+              <tr>
+                <td><%= category.name %></td>
+                <td><%= category.questions.count %></td>
+                <td><%= current_user.user_inputs.where(question: category.questions).count %></td>
+                <td><%= current_user.user_inputs.where(question: category.questions).correct_answers.count %></td>
+                <td><%= current_user.user_inputs.where(question: category.questions).incorrect_answers.count %></td>
+                <td><%= category.questions.count - current_user.user_inputs.where(question: category.questions).count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size: 22px"><b><u>Your Progress</u></b></div><hr>
+      <% percentage_correct = (current_user.user_inputs.where(correct_answer: true).count*100)/(current_user.user_inputs.count) %>
+      <% if percentage_correct > 60 %>
+        <p class="positive-review"><b>You are doing great! Go ahead !<b></p>
+      <% else %>
+        <p class="negative-review"><b>You need more practice. Practice hard.<b></p>
+      <% end %>
+    </center>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="authform quizwidth">
+  <%= form_tag question_quiz_index_path, method: 'GET', class: 'form-inline' do  %>
+    <div class='form-group'>
+      <%= hidden_field_tag :question_id, question.id %>
+      <%= hidden_field_tag :category, category.name %>
+      <%= hidden_field_tag :quelist, quelist %>
+      <%= hidden_field_tag :quiz, quiz.id %>
+
+      <center><h4>Question</h4></center>
+      <hr>
+      <% lines = question.text.split("<br />") %>
+      <% lines.each do |li| %>
+        <%= li %><br>
+      <% end %>
+    </div>
+    <hr>
+    <% choices.each do |option| %>
+      <%= radio_button_tag 'choice', option.id, required: true %>&nbsp;&nbsp;&nbsp;&nbsp;<span><%= option.text %></span><br>
+    <% end %>
+    <hr>
+    <center>
+      <div class='form-group nextbutton'>
+        <%= submit_tag 'Next Question', :class=>'btn btn-default' %>
+      </div>
+    </center>
+  <% end %>
+</div>

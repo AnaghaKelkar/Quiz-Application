@@ -1,0 +1,5 @@
+<% if @question.present? %>
+  <%= render 'quiz_question', question: @question, choices: @choices, category: @category, quelist: @quelist, quiz: @quiz %>
+<% else %>
+  <%= render 'quiz_thankyou', score: @quiz_score, quiz: @quiz %>
+<% end %>
