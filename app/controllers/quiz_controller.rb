@@ -43,7 +43,8 @@ private
   end
 
   def quiz
-    quiz = Quiz.new(name: "Quiz", category: @category)
+    lbl = "Quiz #{(Quiz.last.id+1)}"
+    quiz = Quiz.new(name: lbl, category: @category)
     quiz.save(validate: false)
     return quiz
   end
