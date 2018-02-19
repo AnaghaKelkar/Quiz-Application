@@ -18,10 +18,12 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'devise'
 gem 'bootstrap-sass'
 group :development, :test do
+  gem 'factory_bot_rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'pry'
+  gem 'rspec-rails'
 end
 gem 'pry-rails', group: [:development, :test]
 group :development do
