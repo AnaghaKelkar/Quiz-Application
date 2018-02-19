@@ -15,4 +15,9 @@ Rails.application.routes.draw do
     end
     get :review
   end
+  resources :analytics do
+    collection do
+      get :summary
+    end
+  end
 end
