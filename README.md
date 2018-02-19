@@ -58,3 +58,16 @@ Things you may want to cover:
 * Run application in browser
   
   localhost:3000
+
+* Application testing - Rspec
+
+  bundle exec rspec spec/features/users/sign_in_spec.rb
+  bundle exec rspec spec/features/users/sign_out_spec.rb
+  bundle exec rspec spec/features/users/user_delete_spec.rb
+  bundle exec rspec spec/features/users/user_edit_spec.rb
+  bundle exec rspec spec/features/users/user_index_spec.rb
+  bundle exec rspec spec/features/visitors/about_page_spec.rb
+  bundle exec rspec spec/features/visitors/home_page_spec.rb
+  bundle exec rspec spec/features/visitors/navigation_spec.rb
+  bundle exec rspec spec/features/visitors/sign_up_spec.rb
+  bundle exec rspec spec/features/quiz/quiz_spec.rb

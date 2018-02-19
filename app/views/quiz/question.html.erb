@@ -7,8 +7,8 @@
       </center>
     </div>
   </div>
-<% elsif @question.present? %>
-  <%= render 'quiz_question', question: @question, choices: @choices, category: @category, quelist: @quelist, quiz: @quiz %>
+<% elsif @next_question.present? %>
+  <%= render 'quiz_question', question: @next_question, choices: @choices, category: @category, quelist: @question_ids, quiz: @quiz %>
 <% else %>
-  <%= render 'quiz_thankyou', score: @quiz_score, quiz: @quiz %>
+  <%= render 'quiz_thankyou', score: @score, quiz: @quiz %>
 <% end %>

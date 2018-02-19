@@ -6,7 +6,7 @@ class QuizController < ApplicationController
   def review
     @quiz = Quiz.find(params[:quiz_id])
     @user_inputs = @quiz.user_inputs
-    @count = @user_inputs.first.question.choices.count
+    @count = 5 # in this case its 5 always otherwise will need to retrieve it from database
   end
 
   def summary
@@ -16,46 +16,35 @@ class QuizController < ApplicationController
   def question
     @category = category(params)
     if params[:question_id].present?
-      @quelist, @question, @quiz, score = filter_parameters(params)
-      @quiz_score = score unless @question.present?
+      @question_ids, @next_question, @quiz, @score = Quiz.filter(params, current_user)
     else
-      @quelist = generate_random_questions(params)
-      if @quelist.empty?
+      @question_ids = question_ids_for_quiz(params)
+      if @question_ids.empty?
         @message = "No more questions left"
       else
-        @question = Question.find(@quelist.first)
-        @quiz = Quiz.new(name: "Quiz", category: @category)
-        @quiz.save(validate: false)
+        @next_question = Question.find(@question_ids.first)
+        @quiz = quiz
       end
     end
-    @choices = @question.choices if @question.present?
+    @choices = @next_question.choices if @next_question.present?
   end
 
+private
   def category(params)
     @category ||= Category.find_by_name(params[:category])
   end
 
-  def filter_parameters(params)
-    questions_for_quiz = params[:quelist].split().map(&:to_i)
-    question = questions_for_category.find(params[:question_id]).next_question(questions_for_quiz)
-    quiz_entry = Quiz.where(id: params[:quiz]).first
-    score = current_user.create_quiz_entry(params[:choice], questions_for_quiz, quiz_entry)
-    [questions_for_quiz, question, quiz_entry, score]
+  def question_ids_for_quiz(params)
+    return category(params).nil? ? ids(Question.all) : ids(category(params).questions)
   end
 
-  def generate_random_questions(params)
-    if category(params).nil?
-      questions_for_category.where.not(id: current_user.user_inputs.pluck(:question_id)).sample(5).pluck(:id)
-    else
-      questions_for_category.where.not(id: current_user.user_inputs.pluck(:question_id)).sample(5).pluck(:id)
-    end
+  def ids(questions)
+    return questions.where.not(id: current_user.user_inputs.pluck(:question_id)).sample(5).pluck(:id)
   end
 
-  def questions_for_category
-    if category(params).nil?
-      Question.all
-    else
-      category(params).questions
-    end
+  def quiz
+    quiz = Quiz.new(name: "Quiz", category: @category)
+    quiz.save(validate: false)
+    return quiz
   end
 end
