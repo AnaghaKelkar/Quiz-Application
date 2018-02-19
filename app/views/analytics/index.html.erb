@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.load('current', {'packages':['corechart']});
+        $.ajax({
+          method: 'GET',
+          url: 'http://localhost:3000/analytics/summary',
+          dataType: 'json',
+          success: function(data){
+            window.info_json = data;
+          }
+        });
+        google.charts.setOnLoadCallback(drawBarChart1);
+        google.charts.setOnLoadCallback(drawBarChart2);
+        google.charts.setOnLoadCallback(drawPieChart1);
+        google.charts.setOnLoadCallback(drawPieChart2);
+      });
+    </script>
+  </head>
+  <body>
+    <center>
+      <div class="row " style="margin-top: 20px;">
+        <div class="col-md-6 positive-review" style="margin-left:140px;"> Quiz Summary</div>
+        <div class="col-md-6 positive-review" style="margin-left:270px;"> Solved Quiz Summary</div>
+      </div>
+      <div class="row" style="margin-top: 30px;">
+        <div class="col-md-6">
+          <div id='bar_graph1' style="width: 450px; height: 250px;">
+            <%= image_tag('loadingimage.gif', height: '200')%>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id='bar_graph2' style="width: 450px; height: 250px;">
+            <%= image_tag('loadingimage.gif', height: '200')%>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 30px;">
+        <div class="col-md-6">
+          <div id='piechart1' style="width: 450px; height: 200px;">
+            <%= image_tag('loadingimage.gif', height: '200')%>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id='piechart2' style="width: 450px; height: 200px;">
+            <%= image_tag('loadingimage.gif', height: '200')%>
+          </div>
+        </div>
+      </div>
+    </center>
+  </body>
+</html>
