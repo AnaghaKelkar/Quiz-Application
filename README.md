@@ -1,9 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Find detailed report of application in public folder.
 
-Things you may want to cover:
+Things to make application run successfully:
 
 * Ruby version
 
