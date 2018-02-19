@@ -51,10 +51,10 @@ Things you may want to cover:
   
   rake initial:setup
 
-* Run Server
+* Start Server
 
   rails server
 
-* start server
+* Run application in browser
   
   localhost:3000
