@@ -43,7 +43,8 @@ private
   end
 
   def quiz
-    lbl = "Quiz #{(Quiz.last.id+1)}"
+    last_quiz_id = Quiz.last.try(:id).nil? ? 1 : Quiz.last.try(:id)+1
+    lbl = "Quiz #{last_quiz_id}"
     quiz = Quiz.new(name: lbl, category: @category)
     quiz.save(validate: false)
     return quiz
