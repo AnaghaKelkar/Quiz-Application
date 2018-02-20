@@ -60,16 +60,6 @@ Things to make application run successfully:
 
 * Application testing - Rspec
 
-  ................User Login related specs...................
-  bundle exec rspec spec/features/users/sign_in_spec.rb
-  bundle exec rspec spec/features/users/sign_out_spec.rb
-  bundle exec rspec spec/features/users/user_delete_spec.rb
-  bundle exec rspec spec/features/users/user_edit_spec.rb
-  bundle exec rspec spec/features/users/user_index_spec.rb
-  .....................After login pages......................
-  bundle exec rspec spec/features/visitors/about_page_spec.rb
-  bundle exec rspec spec/features/visitors/home_page_spec.rb
-  bundle exec rspec spec/features/visitors/navigation_spec.rb
-  bundle exec rspec spec/features/visitors/sign_up_spec.rb
-  .......................Setup test specs.....................
-  bundle exec rspec spec/features/quiz/quiz_spec.rb
+  bundle exec rspec spec/features/users/*
+  bundle exec rspec spec/features/visitors/*
+  bundle exec rspec spec/features/quiz/*

@@ -20,7 +20,7 @@ feature 'Sign Up', :devise do
   #   When I sign up with an invalid email address
   #   Then I see an invalid email message
   scenario 'visitor cannot sign up with invalid email address' do
-    sign_up_with('bogus', 'please123', 'please123')
+    sign_up_with('test', 'please123', 'please123')
     expect(page).to have_content 'Email is invalid'
   end
 
