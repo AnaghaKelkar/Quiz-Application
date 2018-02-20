@@ -61,5 +61,7 @@ Things to make application run successfully:
 * Application testing - Rspec
 
   bundle exec rspec spec/features/users/*
+
   bundle exec rspec spec/features/visitors/*
+
   bundle exec rspec spec/features/quiz/*
