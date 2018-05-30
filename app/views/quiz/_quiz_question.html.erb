@@ -1,3 +1,10 @@
+<div class="authform quizwidth quizdetails">
+  <div class="row" style='margin-left: 30px;padding-bottom: 20px;'>
+    <div class="col-6 col-md-4"><b style='font-size: 18px;'>Quiz Name: </b></span><%= quiz.name %></div>
+    <div class="col-6 col-md-4"><b style='font-size: 18px;'>Participant Name: </b></span><%= current_user.name %></div>
+    <div class="col-6 col-md-4"><b style='font-size: 18px;'>Question: </b></span><%= quelist.index(question.id)+1 %> / <%= quelist.length %></div>
+  </div>
+</div>
 <div class="authform quizwidth">
   <%= form_tag question_quiz_index_path, method: 'GET', class: 'form-inline' do  %>
     <div class='form-group'>
@@ -6,8 +13,6 @@
       <%= hidden_field_tag :quelist, quelist %>
       <%= hidden_field_tag :quiz, quiz.id %>
 
-      <center><h4>Question</h4></center>
-      <hr>
       <% lines = question.text.split("<br />") %>
       <% lines.each do |li| %>
         <%= li %><br>
@@ -15,12 +20,12 @@
     </div>
     <hr>
     <% choices.each do |option| %>
-      <%= radio_button_tag 'choice', option.id, required: true %>&nbsp;&nbsp;&nbsp;&nbsp;<span><%= option.text %></span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<%= radio_button_tag 'choice', option.id, required: true %>&nbsp;&nbsp;&nbsp;&nbsp;<span><%= option.text %></span><br>
     <% end %>
     <hr>
     <center>
       <div class='form-group nextbutton'>
-        <%= submit_tag 'Next Question', :class=>'btn btn-default' %>
+        <%= submit_tag 'Next Question', :class=>'btn btn-default btn-quiz' %>
       </div>
     </center>
   <% end %>

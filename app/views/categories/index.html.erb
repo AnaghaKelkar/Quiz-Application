@@ -1,14 +1,18 @@
 <div class="authform">
+    <div><center class="heading">Welcome <%= current_user.name %></center></div>
+    <%= image_tag 'start_quiz.png' %>
 	<%= form_tag question_quiz_index_path, method: 'GET', class: 'form-inline' do  %>
 	  <div class='form-group'>
-	    <center><h4>Select quiz category</h4></center>
+	    <h4><center class="inner_heading">Select Quiz category</center></h4>
 	    <hr>
 	    <center><%= select_tag 'category', options_for_select(@categories), prompt: 'All categories', class: 'form-control' %></center>
 	  </div>
 	  <hr>
 	  <center>
 		  <div class='form-group'>
-		    <%= submit_tag 'Start Quiz', :class=>'btn btn-default' %>
+            <%= submit_tag 'Start Quiz', :class=>'btn btn-default' do %>
+              <span class="glyphicon glyphicon-off"></span>
+            <% end %>
 		  </div>
 		</center>
 	<% end %>

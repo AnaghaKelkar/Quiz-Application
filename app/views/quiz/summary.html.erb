@@ -12,25 +12,26 @@
   }
 
   tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #EBF5FB;
   }
 </style>
 <div class="container">
   <div class="row">
+    <div class="authform quizwidth quizdetails" style='padding-bottom:20px;'>
+      <b style='margin-left:15px;'>Question Summary</b> for <%= current_user.name %>
+    </div>
+    <br>
     <center>
-      <br>
-      <div class="big-font"><b><u>Summary</u></b></div>
-      <br><br>
       <div>
         <table class="table">
           <tbody>
             <tr>
-              <td>Category</td>
-              <td>Total Questions</td>
-              <td>Questions answered</td>
-              <td>Correct Answers</td>
-              <td>Wrong Answers</td>
-              <td>Question remaining</td>
+              <td><b>Category</td>
+              <td><b>Total Questions</td>
+              <td><b>Questions answered</td>
+              <td><b>Correct Answers</td>
+              <td><b>Incorrect Answers</td>
+              <td><b>Questions remaining</td>
             </tr>
             <tr style="background-color: #99ccff">
               <% total = Question.count %>
@@ -57,13 +58,13 @@
           </tbody>
         </table>
       </div>
-      <div class="big-font"><b><u>Your Progress</u></b></div><hr>
-      <% cls, text = current_user.calculate_progress %>
-      <% if cls == "positive-review" %>
-        <p class = "positive-review"><b><%= text %></b></p>
-      <% else %>
-        <p class = "negative-review"><b><%= text %></b></p>
-      <% end %>
     </center>
+    <div class="authform quizwidth quizdetails" style='padding-bottom:20px;'>
+      <b style='margin-left:15px;'>Progress </b> for <%= current_user.name %>
+    </div>
+    <% cls, text = current_user.calculate_progress %>
+    <div class="authform quizwidth quizdetails" style='padding-bottom:25px;background-color:#FDEDEC;'>
+      <b style='color:#C0392B; margin-left:15px;'><%= text %></b>
+    </div>
   </div>
 </div>

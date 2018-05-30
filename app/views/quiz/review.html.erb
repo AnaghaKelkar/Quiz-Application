@@ -12,24 +12,29 @@
   }
 
   tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #EBF5FB;
   }
 </style>
 <div class="container">
   <div class="row">
     <center>
       <br>
-      <div style="font-size: 18px">Review Quiz <b><u><%= @quiz.name %></u></b></div>
+      <div class="authform quizwidth quizdetails">
+        <div class="row" style='padding-bottom: 20px;'>
+          <div class="col-6 col-md-6"><b style='font-size: 18px;'>Quiz Name: </b></span><%= @quiz.name %></div>
+          <div class="col-6 col-md-6"><b style='font-size: 18px;'>Participant Name: </b></span><%= current_user.name %></div>
+        </div>
+      </div>
       <br>
       <div>
         <table class="table">
           <tbody>
             <tr>
-              <td>Question</td>
+              <td><b>Question</b></td>
               <% (1..@count).each do |i| %>
-                <td>Option <%= i %></td>
+              <td><b>Option <%= i %></b></td>
               <% end %>
-              <td>Your Answer</td>
+              <td><b>Your Answer</b></td>
             </tr>
             <% @user_inputs.each do |user_input| %>
               <% question = user_input.question %>

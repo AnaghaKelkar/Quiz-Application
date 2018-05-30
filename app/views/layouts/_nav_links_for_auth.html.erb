@@ -2,13 +2,17 @@
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
   <li><%= link_to 'Quiz Categories', categories_path %></li>
   <li><%= link_to 'Quiz Summary', quiz_index_path %></li>
-  <li><%= link_to 'Overall Summary', summary_quiz_index_path %></li>
+  <li><%= link_to 'Question Summary', summary_quiz_index_path %></li>
   <li><%= link_to 'Graphical Summary', analytics_path %></li>
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 <% end %>
 <% if user_signed_in? %>
-  $nbsp;$nbsp;$nbsp;$nbsp;$nbsp;$nbsp;
-  <li style="float:right;clear:right;"><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  <a href='#' class='navbar-brand'>Welcome <%= current_user.name %></a>
+  <li>
+    <%= link_to destroy_user_session_path, :method=>'delete' do %>
+      <span class="glyphicon glyphicon-off"></span>
+    <% end %>
+  </li>
 <% end %>

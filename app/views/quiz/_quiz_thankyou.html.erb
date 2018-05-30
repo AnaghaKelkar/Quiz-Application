@@ -1,13 +1,23 @@
 <div class="margin-image">
-  <%= image_tag src="thank_you.jpg", height: '60%', width: '60%'%>
+  <%= image_tag src="thankyou.png", height: '50%', width: '50%'%>
 </div>
-
-<hr>
-<center><h4> Final Score for Quiz : <b><%= score %></b></h4></center>
-<hr>
-
+<center>
+  <h4><b>Final Score for Quiz :</b></h4>
+  <%= score %> of <%= quelist.length %><br>
+  <b><%= (score*100/quelist.length) %> %</b><br><br>
+  <b>
+    <% if score == quelist.length %>
+      Perfect!!
+    <% elsif score >= quelist.length-2 %>
+      You are doing good!!
+    <% else %>
+      Improve your score!!
+    <% end %>
+  </b>
+</center>
+<br>
 <center>
   <div class="form-group">
-    <p><%= link_to 'Review Submission', quiz_review_path(quiz.id) %></p>
+    <p><%= link_to 'Review Submission', quiz_review_path(quiz.id), :class=>'btn btn-info' %></p>
   </div>
 </center>

@@ -1,13 +1,45 @@
-<br>
-<% content_for :title do %>About<% end %>
-<h3>About the Website</h3>
-<p>
-This web application was created with
-<%= link_to('Rails', 'https://github.com/AnaghaKelkar') %>
-from the <%= link_to('Quiz Application', 'https://github.com/AnaghaKelkar/quiz_app') %>.
-</p>
-<hr style="border-top: 1px solid #8c8b8b;">
-<h4>About Quiz Application</h4>
-<p>
-  To build a multiple choice web application.
-</p>
+<ul class='sticky'>
+  <li class='sticky'>
+    <a href="#" class='a_sticky'>
+      <%= image_tag "AboutUS.jpeg" %>
+      <hr class='hr_blue'>
+      <h2>About Website</h2>
+      <hr class='hr_blue'>
+      <p>To build a multiple choice web application.</p>
+      <p>
+        <span>» ‘Welcome’ style screen that shows information about</span><br>
+        <span>&nbsp;&nbsp;- Available Questions</span><br>
+        <span>&nbsp;&nbsp;- Already taken Questions</span><br>
+        <span>» Multiple choice questions with a category assigned to it.</span><br>
+        <span>» Review Quiz.</span><br>
+        <span>» Start Quiz.</span>
+      </p>
+    </a>
+  </li>
+  <li class='sticky'>
+    <a href="#" class='a_sticky'>
+      <%= image_tag "programming_languages.jpeg" %>
+      <hr class='hr_blue'>
+      <h2>Technologies:</h2>
+      <hr class='hr_blue'>
+      <span>» Ruby on Rails</span><br>
+      <span>» HTML</span><br>
+      <span>» CSS</span><br>
+      <span>» JavaScript</span><br>
+      <span>» SQLite</span>
+    </a>
+  </li>
+  <li class='sticky'>
+    <a href="#" class='a_sticky'>
+      <%= image_tag "functionality.jpeg" %>
+      <hr class='hr_blue'>
+      <h2>Functionalities:</h2>
+      <hr class='hr_blue'>
+      <span>» Start Quiz.</span><br>
+      <span>» Review Quiz.</span><br>
+      <span>» Quiz Summary.</span><br>
+      <span>» Overall Summary.</span><br>
+      <span>» Graphical Summary.</span>
+    </a>
+  </li>
+</ul>

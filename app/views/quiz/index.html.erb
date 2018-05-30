@@ -12,13 +12,16 @@
   }
 
   tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #EBF5FB;
   }
 </style>
 <div class="container">
   <div class="row">
+    <div class="authform quizwidth quizdetails" style='padding-bottom:20px;'>
+      <b style='margin-left:15px;'>Quiz Summary</b> for <%= current_user.name %>
+    </div>
+    <br>
     <center>
-      <br><h3>Quiz Summary</h3><br>
       <% if @quiz.empty? %>
         <p class = "positive-review"><b>You have not taken any quiz yet.</b></p>
       <% else %>
@@ -26,11 +29,11 @@
           <table class="table">
             <tbody>
               <tr>
-                <td>Category</td>
-                <td>Quiz Name</td>
-                <td>Number of Questions</td>
-                <td>Score</td>
-                <td>Review</td> 
+                <td><b>Category</td>
+                <td><b>Quiz Name</td>
+                <td><b>Number of Questions</td>
+                <td><b>Score</td>
+                <td><b>Review</td> 
               </tr>
               <% @quiz.each do |quiz| %>
                 <tr>
@@ -38,7 +41,11 @@
                   <td><%= quiz.name %></td>
                   <td><%= quiz.user_inputs.count %></td>
                   <td><%= quiz.user_inputs.where(correct_answer: true).count %></td>
-                  <td><%= link_to "Review Quiz", quiz_review_path(quiz.id) %></td>
+                  <td>
+                    <%= link_to quiz_review_path(quiz.id) do %>
+                      <span class="glyphicon glyphicon-search"></span>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
